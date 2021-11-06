@@ -20,7 +20,7 @@ Esse endpoint aceitará uma requisição com método POST com uma lista de infor
     "clinical_backgrounds": [
         {
             "type": "DISEASE", // Opções são: DISEASE, SURGICAL, VACCINE e MEDICINE
-            "value": "Influenza", // Campo descriptivo da informação de saúde (ver opções de valores para cada tipo na seção de regras ao final)
+            "value": "Diabetes", // Campo descriptivo da informação de saúde (ver opções de valores para cada tipo na seção de regras ao final)
             "created_at": "2021-03-03T09:55:00" // Data em formato ISO-8601
         }
     ]
@@ -35,7 +35,7 @@ Esse endpoint aceitará uma requisição com método POST com uma lista de infor
             "id": "ed2335dc-79bc-4408-ab3c-bdf92c03df49", // UUID aleatório gerado do registro criado
             "person_id": "57d4e5ce-d122-48f1-9a05-256b514f6da8", // UUID da pessoa enviado na query string
             "type": "DISEASE", // Opções são: DISEASE, SURGICAL, VACCINE e MEDICINE
-            "value": "Influenza", // Campo descriptivo da informação de saúde (ver opções de valores para cada tipo na seção de regras ao final)
+            "value": "Diabetes", // Campo descriptivo da informação de saúde (ver opções de valores para cada tipo na seção de regras ao final)
             "created_at": "2021-03-03T09:55:00" // Data em formato ISO-8601
         }
     ]
@@ -61,7 +61,7 @@ EMPTY
             "id": "ed2335dc-79bc-4408-ab3c-bdf92c03df49", // UUID aleatório gerado do registro criado
             "person_id": "57d4e5ce-d122-48f1-9a05-256b514f6da8", // UUID
             "type": "DISEASE", // Opções são: DISEASE, SURGICAL, VACCINE e MEDICINE
-            "value": "Influenza", // Campo descriptivo da informação de saúde (ver opções de valores para cada tipo na seção de regras ao final)
+            "value": "Diabetes", // Campo descriptivo da informação de saúde (ver opções de valores para cada tipo na seção de regras ao final)
             "created_at": "2021-03-03T09:55:00" // Data em formato ISO-8601
         }
     ]
@@ -72,17 +72,26 @@ EMPTY
 
 Durante o processamento da requisição, as seguintes regras devem ser aplicadas:
 
-### Regra #1 - Opções de valores para cada tipo de 
+### Regra #1 - Opções de valores para cada tipo de registro de saúde
 
-Em construção
+Para cada tipo de registro de saúde (`type`), apenas serão aceito um conjunto específico de valores (`value`), conforme tabela abaixo:
+
+| Tipo     | Valores aceitos                                                       |
+| -------- |:---------------------------------------------------------------------:|
+| DISEASE  | Diabetes, Alzheimer, Hypertension, Asthma, Parkinson                  |
+| SURGICAL | Mammoplasty, Liposuction, Blepharoplasty, Rhinoplasty, Abdominoplasty |
+| VACCINE  | BCG, HPV, Hepatitis A, Hepatitis B, Influenza                         |
+| MEDICINE | Aradois, Paroxetine, Addera D3, Xarelto, Glifage XR                   |
+
+Caso seja fornecido um valor ou um tipo não presenta na tabela, deve-se retornar um erro de BAD REQUEST, indicando a causa do erro.
 
 ## O que vamos avaliar?
 
-- Documentação e arquivo README sobre o projeto, as tecnologias utilizadas e como subir e executar sua API, bem como os testes
+- Documentação e arquivo README sobre o projeto, as tecnologias utilizadas e como subir e executar a API e os testes
 - Testes de qualidade (bons testes são melhores do que muitos testes, então não se preocupe em tentar atingir 100% de cobertura)
 - Qualidade do código: idiomático, aderente a comunidade/padrões/guias de estilo e de fácil leitura e manutenção
+- Tratamento de erros e aderência aos respectivos códigos HTTPs
 - Validação das regras
-- Tratamento de erros
 
 ## Não precisa se preocupar:
 
