@@ -27,11 +27,6 @@ app.listen(port, () => {
     console.log(`Online server at http://localhost:${port}`)
 })
 
-app.get('/', (req, res) => {
-    res.status(200).send('Testado com sucesso tomele pai é genio !');
-});
-
-
 app.post('/:person_id/clinical_backgrounds', async (req, res) => {
     try {
         const personId = req.params.person_id;
